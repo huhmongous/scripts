@@ -6,15 +6,15 @@ aws = s3.list_buckets()
 
 bucket_key = aws['Buckets']
 
-def encrypt_bucket(bucket_name):
+def encrypt_bucket(bucket_key):
     try:
         response = s3.get_bucket_encryption(
-            Bucket=bucket_name
+            Bucket=bucket_key
         )
 
     except:
         response = s3.put_bucket_encryption(
-            Bucket= bucket_name,
+            Bucket= bucket_key,
             ServerSideEncryptionConfiguration={
                 'Rules': [
                     {
